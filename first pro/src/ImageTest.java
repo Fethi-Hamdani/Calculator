@@ -29,11 +29,12 @@ import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.UIManager;
 public class ImageTest {
  public static boolean play=false;
- public static boolean opi=false,con=true; 
+ public static boolean opi=false,con=true,rec=true; 
  public static int op=0;
- public static String b="",v="";
+ public static String b="",v="",s="";
  public static void main(String[] args) throws FileNotFoundException, JavaLayerException {
 	
     ImagePanel panel = new ImagePanel(new ImageIcon("resources/bc.jpg").getImage());
@@ -41,6 +42,7 @@ public class ImageTest {
     panel.setAlignmentX(Component.RIGHT_ALIGNMENT);
     JFrame frame = new JFrame();
     frame.setTitle("Simple Calculator");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().add(panel, BorderLayout.NORTH);
     JLabel disp = new JLabel(" 0");
     disp.setBounds(75, 56, 256, 43);
@@ -50,11 +52,19 @@ public class ImageTest {
     disp.setHorizontalAlignment(SwingConstants.RIGHT);
     JButton btn1 = new JButton("1");
     btn1.setBounds(75, 293, 60, 60);
+    
+    JLabel opr = new JLabel("Operation");
+    opr.setForeground(UIManager.getColor("CheckBox.darkShadow"));
+    opr.setBackground(Color.WHITE);
+    opr.setFont(new Font("Tahoma", Font.BOLD, 15));
+    opr.setBounds(81, 11, 250, 43);
+    panel.add(opr);
     btn1.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true ;music(2);
-    		if(opi) {v=v+1;disp.setText(v+" ");}
-    		else {b=b+1;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+1;disp.setText(v+" ");s=s+1;opr.setText(s);}
+    		else {b=b+1;disp.setText(b+" ");s=s+1;opr.setText(s);}
     	}
     });
     
@@ -63,8 +73,9 @@ public class ImageTest {
     btn2.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+2;disp.setText(v+" ");}
-    		else {b=b+2;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+2;disp.setText(v+" ");s=s+2;opr.setText(s);}
+    		else {b=b+2;disp.setText(b+" ");s=s+2;opr.setText(s);}
     	}
     });
 
@@ -74,8 +85,9 @@ public class ImageTest {
     btn6.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+6;disp.setText(v+" ");}
-    		else {b=b+6;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+6;disp.setText(v+" ");s=s+6;opr.setText(s);}
+    		else {b=b+6;disp.setText(b+" ");s=s+6;opr.setText(s);}
     	}
     });
     
@@ -84,8 +96,9 @@ public class ImageTest {
     btn3.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+3;disp.setText(v+" ");}
-    		else {b=b+3;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+3;disp.setText(v+" ");s=s+3;opr.setText(s);}
+    		else {b=b+3;disp.setText(b+" ");s=s+3;opr.setText(s);}
     	}
     });
     
@@ -94,8 +107,9 @@ public class ImageTest {
     btn4.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+4;disp.setText(v+" ");}
-    		else {b=b+4;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+4;disp.setText(v+" ");s=s+4;opr.setText(s);}
+    		else {b=b+4;disp.setText(b+" ");s=s+4;opr.setText(s);}
     	}
     });
     
@@ -104,8 +118,9 @@ public class ImageTest {
     btn5.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+5;disp.setText(v+" ");}
-    		else {b=b+5;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+5;disp.setText(v+" ");s=s+5;opr.setText(s);}
+    		else {b=b+5;disp.setText(b+" ");s=s+5;opr.setText(s);}
     	}
     });
     
@@ -114,8 +129,9 @@ public class ImageTest {
     btn7.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+7;disp.setText(v+" ");}
-    		else {b=b+7;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+7;disp.setText(v+" ");s=s+7;opr.setText(s);}
+    		else {b=b+7;disp.setText(b+" ");s=s+7;opr.setText(s);}
     	}
     });
     
@@ -124,8 +140,9 @@ public class ImageTest {
     btn9.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+9;disp.setText(v+" ");}
-    		else {b=b+9;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+9;disp.setText(v+" ");s=s+9;opr.setText(s);}
+    		else {b=b+9;disp.setText(b+" ");s=s+9;opr.setText(s);}
     	}
     });
     
@@ -157,16 +174,17 @@ public class ImageTest {
     btn0.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+0;disp.setText(v+" ");}
-    		else {b=b+0;disp.setText(b+" ");}
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+0;disp.setText(v+" ");s=s+0;opr.setText(s);}
+    		else {b=b+0;disp.setText(b+" ");s=s+0;opr.setText(s);}
     	}
     });
     
     
-    JButton button_1 = new JButton("=");
-    button_1.setBounds(215, 364, 118, 29);
-    button_1.setBackground(new Color(169, 169, 169));
-    button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+    JButton button_equal = new JButton("=");
+    button_equal.setBounds(215, 364, 118, 29);
+    button_equal.setBackground(new Color(169, 169, 169));
+    button_equal.setFont(new Font("Tahoma", Font.BOLD, 14));
     
     JButton btnClearAll = new JButton("Clear All");
     btnClearAll.setBounds(75, 110, 130, 30);
@@ -174,6 +192,7 @@ public class ImageTest {
     btnClearAll.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(1);
+    		opr.setText("Operation");s="";
     	b="";v=""; disp.setText(""+0);opi=false;
     	}
     });
@@ -198,15 +217,11 @@ public class ImageTest {
     panel.add(ops);
     panel.add(opp);
     panel.add(btn0);
-    panel.add(button_1);
-    
-    JLabel opaff = new JLabel(" ");
-    opaff.setFont(new Font("Tahoma", Font.BOLD, 21));
-    opaff.setBounds(188, 31, 46, 14);
-    panel.add(opaff);
+    panel.add(button_equal);
+   
    btnDelete.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
-    		play=true;music(1);
+    		play=true;music(1);s= s.substring(0, s.length() - 1);opr.setText(s);
     		if(opi) {
     		if(v=="")disp.setText("0");
     			v= v.substring(0, v.length() - 1);
@@ -218,10 +233,11 @@ public class ImageTest {
     			b= b.substring(0, b.length() - 1);
     		disp.setText(b+" ");		}
     	}});
-    button_1.addActionListener(new ActionListener() {
+    button_equal.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(1);
     		int s =opdo(op);
+            rec=true;
     		disp.setText(s+" ");
     		b=""+s;v="";opi=false;
     		con=false; 
@@ -232,28 +248,29 @@ public class ImageTest {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(1);
     		opi=true;op=3;
-    		opaff.setText("X");
+    		s=s+"x";opr.setText(s);
+    		rec=false;
     	}
     });
     opp.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(1);
     		opi=true;op=1;
-    		opaff.setText("+");
+    		rec=false;s=s+"+";opr.setText(s);
     	}
     });
     opd.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(1);
-    		opi=true;op=4;
-    		opaff.setText(b+"/"+v);
+    		opi=true;rec=false;op=4;
+    		s=s+"/";opr.setText(s);
     	}
     });
     ops.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(1);
     		opi=true;op=2;
-    		opaff.setText(b+"-"+v);
+    		s=s+"-";opr.setText(s);rec=false;
     	}
     });
     
@@ -261,10 +278,10 @@ public class ImageTest {
     btn8.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
     		play=true;music(2);
-    		if(opi) {v=v+8;disp.setText(v+" ");}
-    		else {b=b+8;disp.setText(b+" ");}
-    	}
-    });
+    		if(rec) {s="";rec=false;b="";}
+    		if(opi) {v=v+8;disp.setText(v+" ");s=s+8;opr.setText(s);}
+    		else {b=b+8;disp.setText(b+" ");s=s+8;opr.setText(s);}
+    	}    });
     frame.pack();
     frame.setVisible(true);
   }
